@@ -1,0 +1,26 @@
+Wat is een SAM?:
+Een SAM is een tekstbestand waarin sequentie uitlijningsgegevens opgeslagen worden die zijn verkregen bij het uitvoeren van een sequentie analyse (zoals DNA sequencing). 
+
+Er zijn verschillende regels in een Sam bestand die verschillende informatie bevatten. die regels zijn als volgt;
+
+Regel 1: QNAME --> Dit is de naam van de read, dit is een unieke identificator voor elke read. 
+
+Regel 2: FLAG --> Een FLAG is een numerieke waarde die de verschillende eigenschappen van de uitlijning van een sequentie (read) aangeeft. deze eigenschappen kunnen de kwaliteit van de mapping zijn, maar ook of de read uniek is. De FLAG is vaak een binair getal dat gedecodeerd kan worden om specifieke eigenschappen te achterhalen. 
+
+Regel 3: RNAME --> Dit is de naam van het referentiegenoom (of transcriptoom) waarop de read is uitgelijnd.
+
+Regel 4: POS --> Dit is de nucleotide positie op het referentiegenoom waar de read begint.
+
+Regel 5: MAPQ --> Dit is de mappingkwaliteitsscore, dit geeft aan hoe goed de read op het referentiegenoom (of transcriptoom) is uitgelijnd. dit wordt uitgedrukt als Phred-score
+
+Regel 6: CIGAR --> Dit is een tekenreeks die de uitlijning van de read op het referentiegenoom beschrijft. het geeft informatie over eventuele inserties, deleties of mismatches in de uitlijning. 
+
+Regel 7: RNEXT --> Dit is de naam van het referentiegenoom van het paar (indien van toepassing). Als de read geen paar heeft, wordt meestal een sterretje (*) weergegeven.
+
+Regel 8: PNEXT --> Dit is de positie op het referentiegenoom van het paar (indien van toepassing).
+
+Regel 9: TLEN --> Dit is de lengte van de sequentie in het sequentiepaar.
+
+Regel 10: SEQ --> Dit is de sequentie van de read.
+
+Regel 11: QUAL --> Dit zijn de kwaliteitsscores van de sequentie die overeenkomen emt elke base in de SEQ kolom.
