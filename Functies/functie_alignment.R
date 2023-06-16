@@ -1,4 +1,4 @@
-align_with_minimap2 <- function(data_type, input_dir, reference_path, minimap2_path) {
+align_with_minimap2 <- function(data_type, input_dir, reference_path) {
   #berekening van minimap2-parameters op basis van het data_type (DNA of RNA)
   if (tolower(data_type) == "DNA") {
     params <- "-a"
@@ -17,7 +17,7 @@ align_with_minimap2 <- function(data_type, input_dir, reference_path, minimap2_p
     output_file <- paste0("alignment_", basename(input_file), ".sam")
     
     #commando voor het uitvoeren van het Minimap2-alignment
-    alignment_command <- paste0(minimap2_path, " ", params, " ", reference_path, " ", input_file, " > ", output_file)
+    alignment_command <- paste0("minimap2", " ", params, " ", reference_path, " ", input_file, " > ", output_file)
     
     #uitvoeren van de Minimap2-alignment
     system2(alignment_command)
@@ -30,6 +30,5 @@ align_with_minimap2 <- function(data_type, input_dir, reference_path, minimap2_p
 data_type <- "RNA"
 input_dir <- "/pad/naar/te/aligneren/bestanden"
 reference_path <- "/pad/naar/referentie/genoom"
-minimap2_path <- "/pad/naar/minimap2"
 
-align_with_minimap2(data_type, input_dir, reference_file, minimap2_path)
+align_with_minimap2(data_type, input_dir, reference_file)
