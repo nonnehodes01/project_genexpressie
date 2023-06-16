@@ -1,12 +1,12 @@
-check_flags_in_sam_files <- function(remove_flags, keep_flags, directory) {
-  # Functie om de unieke flags in een SAM-bestand op te halen
+check_flags_in_sam_files <- function(remove_flags, keep_flags, output_dir) {
+  #functie om de unieke flags in een SAM-bestand op te halen
   get_unique_flags <- function(file) {
     flags <- system(paste0("cut -f 2 ", file), intern = TRUE)
     unique_flags <- unique(flags)
     return(unique_flags)
   }
   
-  # Functie om te controleren of de verwijderde flags correct zijn
+  #functie om te controleren of de verwijderde flags correct zijn
   check_remove_flags <- function(file, remove_flags) {
     unique_flags <- get_unique_flags(file)
     
@@ -29,7 +29,7 @@ check_flags_in_sam_files <- function(remove_flags, keep_flags, directory) {
     }
   }
   
-  # Functie om te controleren of de behouden flags correct zijn
+  #functie om te controleren of de behouden flags correct zijn
   check_keep_flags <- function(file, keep_flags) {
     unique_flags <- get_unique_flags(file)
     
@@ -52,8 +52,8 @@ check_flags_in_sam_files <- function(remove_flags, keep_flags, directory) {
     }
   }
   
-  # Loop over elk SAM-bestand in de opgegeven directory
-  sam_files <- list.files(directory, pattern = "\\.sam$", full.names = TRUE)
+  #loop over elk SAM-bestand in de opgegeven output_dir
+  sam_files <- list.files(output_dir, pattern = "\\.sam$", full.names = TRUE)
   
   for (file in sam_files) {
     cat("Bestand:", file, "\n")
@@ -65,3 +65,9 @@ check_flags_in_sam_files <- function(remove_flags, keep_flags, directory) {
   }
 }
 
+# voorbeeldgebruik van de functie
+# output_dir <- "/pad/naar/uitvoer/filtered_sam" !!!ZELFDE FLAGS ALS BIJ FLAGS FILTERING!!!
+# keep_flags <- c(flags, die, je, wil, houden) of "none" !!!ZELFDE FLAGS ALS BIJ FLAGS FILTERING!!!
+# remove_flags <- c(flags, die, je, wil, verwijderen) of "none" !!!ZELFDE FLAGS ALS BIJ FLAGS FILTERING!!!
+
+check_flags_in_sam_files(remove_flags, keep_flags, output_dir)

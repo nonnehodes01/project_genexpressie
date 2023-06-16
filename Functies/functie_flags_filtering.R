@@ -33,24 +33,24 @@ filter_samtools_flags <- function(input_dir, output_dir, keep_flags, remove_flag
     return(samtools_cmd)
   }
   
-  # Loop over elk invoerbestand
+  #loop over alle invoerbestanden
   for (input_file in input_files) {
-    # Uitvoerbestand voor het huidige invoerbestand
+    #uitvoerbestand maken voor het huidige invoerbestand
     output_file <- file.path(output_dir, paste0("filtered_", basename(input_file)))
     
-    # Bestandsnaam voor het header-bestand
+    #bestandsnaam maken voor het header-bestand
     header_file <- file.path(output_dir, paste0("header_", basename(input_file), ".txt"))
     
-    # Samtools filteren op basis van de opgegeven actie en flags
+    #samtools filteren op basis van de opgegeven flags
     samtools_cmd <- samtools_cmd(flags_to_string(keep_flags, remove_flags), input_file, output_file)
     
-    # Naamgeving voor het headered sam-bestand
+    #naamgeving maken voor het headered sam bestand
     headered_sam_file <- paste0(output_dir, "/headered_", basename(output_file), sep = "")
     
-    # Header toevoegen aan het gefilterde bestand
+    #header toevoegen aan het gefilterde sam bestand
     header_cmd <- paste0("cat ", header_file, " ", output_file, " > ", headered_sam_file)
     
-    # Uitvoeren van de samtools- en header-commando's
+    #uitvoeren van de samtools- en header-commando's
     system(samtools_cmd)
     system(header_cmd)
     
@@ -58,9 +58,10 @@ filter_samtools_flags <- function(input_dir, output_dir, keep_flags, remove_flag
   }
 }
 
-input_dir <- "/pad/naar/gealigneerde/bestanden"
-output_dir <- "/pad/naar/uitvoer"
-keep_flags <- c(0, 3, 16)
-remove_flags <- c(4, 256)
+# voorbeeldgebruik van de functie
+# input_dir <- "/pad/naar/gealigneerde/bestanden" !!!outpur_dir UIT align_with_minimap2 FUNCTION!!!
+# output_dir <- "/pad/naar/uitvoer"
+# keep_flags <- c(flags, die, je, wil, houden) of "none"
+# remove_flags <- c(flags, die, je, wil, verwijderen) of "none"
 
 filter_samtools_flags(input_dir, output_dir, keep_flags, remove_flags)
