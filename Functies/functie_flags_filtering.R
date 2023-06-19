@@ -1,67 +1,31 @@
-filter_samtools_flags <- function(input_dir, output_dir, keep_flags, remove_flags) {
-  #controleren of de output file al bestaat, zo niet dan wordt deze aangemaakt
-  if (!dir.exists(output_dir)) {
-    dir.create(output_dir)
+filter_flags_directory <- function(input_directory, output_directory, flags) {
+  input_files <- list.files(input_directory, pattern = "\\.sam$", full.names = TRUE)
+  if (!dir.exists(output_directory)) {
+    dir.create(output_directory, recursive = TRUE)
   }
-  
-  #aanmaken van een lijst voor de input bestanden in de input_dir
-  input_files <- list.files(input_dir, pattern = "*.sam", full.names = TRUE)
-  
-  #functie om de input keep_flags en remove_flags lists om te zetten naar een string van samtools flags
-  flags_to_string <- function(keep_flags, remove_flags) {
-    keep_flags_str <- ""
-    remove_flags_str <- ""
-    
-    if (length(keep_flags) > 0 && keep_flags[1] != "none") {
-      for (i in seq_along(keep_flags)) {
-        keep_flags_str <- paste0(keep_flags_str, " -f", keep_flags[i])
-      }
-    }
-    
-    if (length(remove_flags) > 0 && remove_flags[1] != "none") {
-      for (i in seq_along(remove_flags)) {
-        remove_flags_str <- paste0(remove_flags_str, " -F", remove_flags[i])
-      }
-    }
-    
-    flags_str <- paste0(keep_flags_str, remove_flags_str)
-    return(flags_str)
-  }
-  #aanmaken van command 
-  samtools_cmd <- function(flags_str, input_file, output_file) {
-    samtools_cmd <- paste0("samtools view ", flags_str, " ", input_file, " -o ", output_file)
-    return(samtools_cmd)
-  }
-  
-  #loop over alle invoerbestanden
   for (input_file in input_files) {
-    #uitvoerbestand maken voor het huidige invoerbestand
-    output_file <- file.path(output_dir, paste0("filtered_", basename(input_file)))
-    
-    #bestandsnaam maken voor het header-bestand
-    header_file <- file.path(output_dir, paste0("header_", basename(input_file), ".txt"))
-    
-    #samtools filteren op basis van de opgegeven flags
-    samtools_cmd <- samtools_cmd(flags_to_string(keep_flags, remove_flags), input_file, output_file)
-    
-    #naamgeving maken voor het headered sam bestand
-    headered_sam_file <- paste0(output_dir, "/headered_", basename(output_file), sep = "")
-    
-    #header toevoegen aan het gefilterde sam bestand
-    header_cmd <- paste0("cat ", header_file, " ", output_file, " > ", headered_sam_file)
-    
-    #uitvoeren van de samtools- en header-commando's
-    system(samtools_cmd)
-    system(header_cmd)
-    
-    cat("Filtering voltooid. Uitvoerbestand:", headered_sam_file, "\n")
+    output_file <- file.path(output_directory, paste0("gefilterd_", basename(input_file)))
+    con_in <- file(input_file, "r")
+    con_out <- file(output_file, "w")
+    while (length(line <- readLines(con_in, n = 1, warn = FALSE)) > 0) {
+      if (!startsWith(line, "@")) {
+        columns <- strsplit(line, "\t")[[1]]
+        flag <- as.integer(columns[2])
+        if (flag %in% flags) {
+          writeLines(line, con_out)
+        }
+      }
+    }
+    close(con_in)
+    close(con_out)
+    cat("Bestand", input_file, "is gefilterd en opgeslagen als", output_file, "\n")
   }
 }
 
-# voorbeeldgebruik van de functie
-# input_dir <- "/pad/naar/gealigneerde/bestanden" !!!outpur_dir UIT align_with_minimap2 FUNCTION!!!
-# output_dir <- "/pad/naar/uitvoer"
-# keep_flags <- c(flags, die, je, wil, houden) of "none"
-# remove_flags <- c(flags, die, je, wil, verwijderen) of "none"
+# Voorbeeldgebruik:
+input_directory <- "~/project_genexpressie/aligned_SAM_files"  # Vervang dit door de naam van de map waarin de input SAM-bestanden zich bevinden
+output_directory <- "~/project_genexpressie/filtered_SAM_files"  # Vervang dit door de naam van de map waarin de gefilterde bestanden moeten worden opgeslagen
+flags_to_filter <- c(0, 16)  # Vervang dit door de gewenste flags om op te filteren
+filter_flags_directory(input_directory, output_directory, flags_to_filter)
 
-filter_samtools_flags(input_dir, output_dir, keep_flags, remove_flags)
+
