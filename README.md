@@ -319,3 +319,15 @@ bed_dir <- "/pad/naar/bed/bestanden" #verander dit naar het gewenste pad
   
 process_bed_files(bed_dir)
 ```
+
+### PCA-analyse voor Patroonherkenning
+
+plaats hier functies voor pca
+
+### bambu
+
+plaats hier functies voor bambu
+
+### deseq
+
+plaats hier functies voor deseq
