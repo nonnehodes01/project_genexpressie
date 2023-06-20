@@ -23,7 +23,7 @@ noteer_unieke_waarden_sam_directory_terminal <- function(directory) {
 }
 
 
-directory <- "~/project_genexpressie/test_output"
+directory <- "~/project_genexpressie/filtered_SAM_files"
 noteer_unieke_waarden_sam_directory_terminal(directory)
 
 

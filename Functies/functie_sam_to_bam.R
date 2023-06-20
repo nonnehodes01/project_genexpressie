@@ -1,18 +1,17 @@
+# Dit is een functie om de gefilterde SAM files om te zetten naar het BAM formaat. 
+# Je hebt om deze functie te gebruiken een directorry nodig met gefilterde SAM bestanden (zoals de output_dir uit de flags_filter functie).
+# Deze functie is gebouwd om gerund te worden in de terminal, je zal het script dus moeten uitvoeren in terminal. 
+
 convert_sam_files_to_bam <- function(input_dir, output_dir) {
-  #controleren of de output directory bestaat, anders maken we deze aan
   if (!dir.exists(output_dir)) {
     dir.create(output_dir)
   }
   
-  #lijst van invoerbestanden in de input directory maken
   input_files <- list.files(input_dir, pattern = "*.sam$", full.names = TRUE)
   
-  #loop over alle invoerbestanden
   for (input_file in input_files) {
-    #uitvoerbestand maken voor het huidige invoerbestand
-    output_file <- file.path(output_dir, paste0(basename(input_file), ".bam"))
+    output_file <- file.path(output_dir, gsub("\\.sam$", ".bam", basename(input_file)))
     
-    #samtools commando uitvoeren om het SAM-bestand om te zetten naar BAM-formaat
     samtools_cmd <- paste0("samtools view -bS ", input_file, " -o ", output_file)
     system(samtools_cmd)
     
@@ -22,6 +21,17 @@ convert_sam_files_to_bam <- function(input_dir, output_dir) {
   cat("Alle SAM-bestanden zijn succesvol geconverteerd naar BAM-bestanden in de directory:", output_dir, "\n")
 }
 
+
+
 # voorbeeldgebruik van de functie
-# input_dir <- "/pad/naar/uitvoer/filtered_sam"!!!ZELFDE ALS output_dir IN filter_samtools_flags FUNCTION!!!
-# output_dir <- "/pad/naar/uitvoer/map/bam"
+input_dir <- "~/project_genexpressie/headered_sam_files"
+output_dir <- "~/project_genexpressie/bam_files"
+convert_sam_files_to_bam(input_dir, output_dir)
+
+# Hoe te runnen in een conda-environment:
+# 1) zorg dat je een conda-environment hebt waarin minimap2 en samtools geinstalleerd is
+# 2) vul de data in --> zie "voorbeeld gebruik van de functie", vul deze in met de data van toepassing
+# 3) activeer je conda-environment
+# 4) ga in de terminal naar de locatie van dit script
+# 5) run in de terminal de volgende command: Rscript functie_sam_to_bam.R
+
