@@ -335,11 +335,11 @@ Een heatmap is een visuele representatie van gegevens waarbij kleur wordt gebrui
 
 Om de PCA en de heatmap te maken is er een functie geschreven die gebruik maakt van bambu. Bambu is een R-pakket dat speciaal is ontworpen voor het analyseren en visualiseren van genexpressiedata. Het biedt verschillende functies en tools. 
 
-#### Functie voor Heatmap en Principal Component Analysis (PCA)
+#### Functie voor Heatmap en Principal Component Analysis (PCA):
 
 Deze pipeline maakt gebruik van het Bambu-pakket in R om een heatmap en Principal Component Analysis (PCA) te genereren op basis van genexpressiedata van BAM-bestanden. Het Bambu-pakket biedt handige functies en tools voor de analyse en visualisatie van genexpressiedata.
 
-##### Installatie en vereisten 
+##### Installatie en vereisten: 
 
 Voordat je de pipeline kunt uitvoeren, moet je ervoor zorgen dat het Bambu-pakket en de GenomicFeatures-bibliotheek zijn geïnstalleerd en geladen. Je kunt ze installeren met behulp van de volgende commando's:
 
@@ -379,6 +379,12 @@ run_bambu_pipeline(bam_folder, annotation_file, genome_file, output_folder)
 ``` 
 let op: Zorg ervoor dat je de juiste bestandspaden opgeeft voor bam_folder, annotation_file, genome_file en output_folder.
 
-### deseq
+### Deseq visualisatie
 
-plaats hier functies voor deseq
+#### Functie voor deseq visualisatie:
+
+#### Installatie en vereisten:
+
+#### Gebruiksinstructies:
+
+#### Voorbeeldgebruik:
