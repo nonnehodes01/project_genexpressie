@@ -23,4 +23,4 @@ summary(deGeneRes)
 
 library(apeglm)
 resLFC <- lfcShrink(dds.deseq, coef = "condition_MCF7_vs_HepG2", type = "apeglm")
-plotMA(resLFC, ylim = c(-3, 3)
+plotMA(resLFC, ylim = c(-3, 3))

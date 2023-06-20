@@ -389,10 +389,50 @@ Pas de bestands- en mapnamen aan volgens de specifieke locatie en bestandsnamen 
 
 ### Deseq visualisatie
 
-#### Functie voor deseq visualisatie:
+Deze functie is ontworpen om een DESeq-analyse uit te voeren en de resultaten visueel weer te geven met behulp van de DESeq2-pakket in R. Het biedt een eenvoudige manier om differentieel tot expressie gebrachte genen te identificeren en de log2 vouwveranderingen in een MA-plot te visualiseren.
 
 #### Installatie en vereisten:
 
+Om deze functie te gebruiken, moeten de volgende R-pakketten zijn geïnstalleerd:
+
+- DESeq2
+- apeglm
+
+Deze pakketten kunnen worden geïnstalleerd met behulp van de volgende code:
+
+```r
+install.packages("DESeq2")
+install.packages("apeglm")
+```
+
 #### Gebruiksinstructies:
 
+1) Zorg ervoor dat de benodigde gegevens aanwezig zijn en correct zijn geformatteerd. Deze functie vereist twee gegevensobjecten: seGene.multiSample en se.multiSample. Deze objecten moeten de vereiste gegevens bevatten voor de DESeq-analyse, zoals genexpressiewaarden en bijbehorende metadata.
+
+2) Laad de functie runDESeqAnalysis in je R-omgeving door de functiecode in je script of R-console te kopiëren.
+
+3) Roep de functie aan met de juiste argumenten: seGene.multiSample en se.multiSample. Zorg ervoor dat deze objecten correct zijn toegewezen voordat je de functie aanroept.
+
+```r
+runDESeqAnalysis(seGene.multiSample, se.multiSample)
+
+```
+
+4) De functie voert de DESeq-analyse uit en geeft een overzicht van de resultaten. Het zal ook een MA-plot genereren om de log2 vouwveranderingen weer te geven.
+
 #### Voorbeeldgebruik:
+
+Hier is een voorbeeld van hoe je de functie kunt gebruiken met fictieve gegevens:
+
+```r
+
+# Definieer seGene.multiSample en se.multiSample met je eigen gegevens
+seGene.multiSample <- ...
+se.multiSample <- ...
+
+# Functie aanroep
+runDESeqAnalysis(seGene.multiSample, se.multiSample)
+
+```
+
+Zorg ervoor dat je de juiste gegevens toewijst aan de seGene.multiSample en se.multiSample variabelen voordat je de functie aanroept. Deze variabelen moeten de vereiste gegevens bevatten die nodig zijn voor de DESeq-analyse.
