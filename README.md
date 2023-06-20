@@ -16,11 +16,11 @@ Om deze functie effectief te gebruiken, volg je onderstaande stappen:
 
 #### Functieparameters:
 
-- _'data_type':_ Specificeer het type data dat wordt gealigneerd, "DNA" of "RNA".
-- _'read_type':_ Specificeer het type reads, "long" of "short".
-- _'input_dir':_ Geef het pad naar de directory met de Fastq-bestanden die je wilt aligneren.
-- _'reference_path':_ Specificeer het pad naar het fasta-referentiebestand (genoom of transcriptoom).
-- _'outpur_dir':_ Specificeer het pad naar de uitvoerdirectory waarin de gealigneerde bestanden worden opgeslagen.
+- __'data_type':__ Specificeer het type data dat wordt gealigneerd, "DNA" of "RNA".
+- __'read_type':__ Specificeer het type reads, "long" of "short".
+- __'input_dir':__ Geef het pad naar de directory met de Fastq-bestanden die je wilt aligneren.
+- __'reference_path':__ Specificeer het pad naar het fasta-referentiebestand (genoom of transcriptoom).
+- __'outpur_dir':__ Specificeer het pad naar de uitvoerdirectory waarin de gealigneerde bestanden worden opgeslagen.
 
 #### Uitvoeren van de functie:
 
@@ -67,9 +67,9 @@ Deze functie, filter_flags_directory, is bedoeld om SAM-bestanden te filteren op
 Om deze functie effectief te gebruiken, volg je onderstaande stappen:
 
 #### Functieparameters:
-- _'input_directory':_ Geef het pad naar de directory met de SAM-bestanden die je wilt filteren. 
-- _'output_directory':_ Geef het pad naar de uitvoerdirectory waarin de gefilterde bestanden worden opgeslagen. 
-- _'flags':_ Geef een vector met de gewenste flags om op te filteren. Bijvoorbeeld: c(0, 16).
+- __'input_directory':__ Geef het pad naar de directory met de SAM-bestanden die je wilt filteren. 
+- __'output_directory':__ Geef het pad naar de uitvoerdirectory waarin de gefilterde bestanden worden opgeslagen. 
+- __'flags':__ Geef een vector met de gewenste flags om op te filteren. Bijvoorbeeld: c(0, 16).
 
 
 #### Uitvoeren van de functie 
@@ -108,7 +108,7 @@ De functie zal de SAM-bestanden in de invoerdirectory filteren op basis van de o
 
 Let op: De functie gaat ervan uit dat de inputbestanden de extensie ".sam" hebben. Pas het patroon in de list.files-functie aan als je bestanden een andere extensie hebben.
 
-Let op: De output bestanden van deze functie bevatten _GEEN_ header. deze dien je toe te voegen aan het bestand met behulp van functie 4. 
+Let op: De output bestanden van deze functie bevatten __GEEN__ header. deze dien je toe te voegen aan het bestand met behulp van functie 4. 
 
 Vergeet niet om de paden aan te passen naar de werkelijke locaties van de invoer- en uitvoerdirectories voordat je de functie uitvoert.
 
@@ -166,9 +166,9 @@ Om deze functie effectief te gebruiken, volg je onderstaande stappen:
 
 #### Functieparameters:
 
-- _'aligned_directory':_ Geef het pad naar de map waarin de gealigneerde SAM-bestanden zich bevinden.
-- _'filtered_directory':_ Geef het pad naar de map waarin de gefilterde SAM-bestanden zich bevinden.
-- _'output_directory':_ Geef het pad naar de map waarin de gecombineerde bestanden moeten worden opgeslagen.
+- __'aligned_directory':__ Geef het pad naar de map waarin de gealigneerde SAM-bestanden zich bevinden.
+- __'filtered_directory':__ Geef het pad naar de map waarin de gefilterde SAM-bestanden zich bevinden.
+- __'output_directory':__ Geef het pad naar de map waarin de gecombineerde bestanden moeten worden opgeslagen.
 
 #### Uitvoeren van de functie:
 
@@ -214,8 +214,8 @@ Om deze functie effectief te gebruiken, volg je onderstaande stappen:
 
 #### Functieparameters
 
-- _'input_dir':_ Geef het pad naar de map met de gefilterde SAM-bestanden.
-- _'output_dir':_ Geef het pad naar de map waarin de BAM-bestanden moeten worden opgeslagen.
+- __'input_dir':__ Geef het pad naar de map met de gefilterde SAM-bestanden.
+- __'output_dir':__ Geef het pad naar de map waarin de BAM-bestanden moeten worden opgeslagen.
 
 #### Uitvoeren van de functie
 
