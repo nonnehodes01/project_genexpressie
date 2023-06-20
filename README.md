@@ -322,15 +322,62 @@ Rscript functie_bed_to_bw.R
 bed_dir <- "/pad/naar/bed/bestanden" #verander dit naar het gewenste pad
   
 process_bed_files(bed_dir)
+
 ```
 
-### PCA-analyse voor Patroonherkenning
+### PCA-analyse en Heatmap-visualisatie
 
-plaats hier functies voor pca
+In genexpressie-onderzoek is het begrijpen van patronen en relaties tussen genen en monsters van cruciaal belang. Twee veelgebruikte technieken om dit te bereiken zijn Principal Component Analysis (PCA) en Heatmap-visualisatie. Beide methoden bieden waardevolle inzichten in de genexpressiepatronen en kunnen helpen bij het identificeren van biologisch relevante clusters of trends.
 
-### bambu
+PCA is een statistische techniek die wordt gebruikt om de variabiliteit in een dataset te begrijpen en te visualiseren. Het doel is om de hoge-dimensionale gegevens te verminderen tot een lager aantal dimensies (principale componenten) zonder al te veel informatie te verliezen. Deze principale componenten zijn lineaire combinaties van de oorspronkelijke variabelen en worden gerangschikt op basis van hun bijdrage aan de totale variabiliteit.
 
-plaats hier functies voor bambu
+Een heatmap is een visuele representatie van gegevens waarbij kleur wordt gebruikt om de relatieve waarden van een matrix weer te geven. In het geval van genexpressiegegevens, kan een heatmap worden gebruikt om de relatieve expressieniveaus van genen in verschillende monsters weer te geven. Door genexpressiegegevens in een heatmap weer te geven, kunnen patronen en clusters van genen en monsters duidelijk worden gevisualiseerd.
+
+Om de PCA en de heatmap te maken is er een functie geschreven die gebruik maakt van bambu. Bambu is een R-pakket dat speciaal is ontworpen voor het analyseren en visualiseren van genexpressiedata. Het biedt verschillende functies en tools. 
+
+#### Functie voor Heatmap en Principal Component Analysis (PCA)
+
+Deze pipeline maakt gebruik van het Bambu-pakket in R om een heatmap en Principal Component Analysis (PCA) te genereren op basis van genexpressiedata van BAM-bestanden. Het Bambu-pakket biedt handige functies en tools voor de analyse en visualisatie van genexpressiedata.
+
+##### Installatie en vereisten 
+
+Voordat je de pipeline kunt uitvoeren, moet je ervoor zorgen dat het Bambu-pakket en de GenomicFeatures-bibliotheek zijn geïnstalleerd en geladen. Je kunt ze installeren met behulp van de volgende commando's:
+
+```r
+install.packages("bambu")
+install.packages("GenomicFeatures")
+library(bambu)
+library(GenomicFeatures)
+```
+
+Zorg ervoor dat je ook de BAM-bestanden, annotatiebestand en genoombestand hebt voorbereid en de juiste bestandspaden hebt ingesteld in de pipelinecode.
+
+##### Gebruiksinstructies:
+
+1) contacteer de servereigenaar voor toegang tot de data
+
+2) zorg dat bambu is geïnstalleert 
+
+3) pas de variabelen in de 'run_bambu_pipeline()' functie aan naar uw gewenste input volgens het voorbeeldgebruik.
+
+4) Run de 'run_bambu_pipeline()' functie in de console 
+
+
+##### Voorbeeldgebruik:
+
+Hier is een voorbeeld van hoe je de functie kunt gebruiken:
+
+```r 
+bam_folder <- "/pad/naar/BAM-bestanden"
+annotation_file <- "/pad/naar/annotatiebestand.gtf.gz"
+genome_file <- "/pad/naar/genoombestand.fna.gz"
+output_folder <- "/pad/naar/uitvoermap"
+
+# Run the Bambu pipeline
+run_bambu_pipeline(bam_folder, annotation_file, genome_file, output_folder)
+
+``` 
+let op: Zorg ervoor dat je de juiste bestandspaden opgeeft voor bam_folder, annotation_file, genome_file en output_folder.
 
 ### deseq
 
