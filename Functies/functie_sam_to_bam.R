@@ -2,15 +2,15 @@
 # Je hebt om deze functie te gebruiken een directorry nodig met gefilterde SAM bestanden (zoals de output_dir uit de flags_filter functie).
 # Deze functie is gebouwd om gerund te worden in de terminal, je zal het script dus moeten uitvoeren in terminal. 
 
-convert_sam_files_to_bam <- function(input_dir, output_dir) {
-  if (!dir.exists(output_dir)) {
-    dir.create(output_dir)
+convert_sam_files_to_bam <- function(input_dir_sam_bam, output_dir_sam_bam) {
+  if (!dir.exists(output_dir_sam_bam)) {
+    dir.create(output_dir_sam_bam)
   }
   
-  input_files <- list.files(input_dir, pattern = "*.sam$", full.names = TRUE)
+  input_files <- list.files(input_dir_sam_bam, pattern = "*.sam$", full.names = TRUE)
   
   for (input_file in input_files) {
-    output_file <- file.path(output_dir, gsub("\\.sam$", ".bam", basename(input_file)))
+    output_file <- file.path(output_dir_sam_bam, gsub("\\.sam$", ".bam", basename(input_file)))
     
     samtools_cmd <- paste0("samtools view -bS ", input_file, " -o ", output_file)
     system(samtools_cmd)
@@ -18,15 +18,15 @@ convert_sam_files_to_bam <- function(input_dir, output_dir) {
     cat("SAM-bestand succesvol geconverteerd naar BAM-bestand:", output_file, "\n")
   }
   
-  cat("Alle SAM-bestanden zijn succesvol geconverteerd naar BAM-bestanden in de directory:", output_dir, "\n")
+  cat("Alle SAM-bestanden zijn succesvol geconverteerd naar BAM-bestanden in de directory:", output_dir_sam_bam, "\n")
 }
 
 
 
 # voorbeeldgebruik van de functie
-input_dir <- "~/project_genexpressie/headered_sam_files"
-output_dir <- "~/project_genexpressie/bam_files"
-convert_sam_files_to_bam(input_dir, output_dir)
+input_dir_sam_bam <- "~/project_genexpressie/headered_sam_files"
+output_dir_sam_bam <- "~/project_genexpressie/bam_files"
+convert_sam_files_to_bam(input_dir_sam_bam, output_dir_sam_bam)
 
 # Hoe te runnen in een conda-environment:
 # 1) zorg dat je een conda-environment hebt waarin minimap2 en samtools geinstalleerd is

@@ -2,9 +2,9 @@
 # Deze functie zal aangeven of de flags correct gefilterd zijn door na te kijken of er nog andere bestanden in de functie zitten dan dat er gevraagd wordt. 
 # Deze functie is gebouwd om gerund te worden in de terminal, je zal het script dus moeten uitvoeren in terminal. 
 
-noteer_unieke_waarden_sam_directory_terminal <- function(directory) {
+noteer_unieke_waarden_sam_directory_terminal <- function(directory_check) {
   # Lijst van SAM-bestanden in de opgegeven directory
-  sam_bestanden <- list.files(directory, pattern = "\\.sam$", full.names = TRUE)
+  sam_bestanden <- list.files(directory_check, pattern = "\\.sam$", full.names = TRUE)
   
   # Loop over elk SAM-bestand
   for (bestandsnaam in sam_bestanden) {
@@ -23,21 +23,7 @@ noteer_unieke_waarden_sam_directory_terminal <- function(directory) {
 }
 
 
-directory <- "~/project_genexpressie/filtered_SAM_files"
-noteer_unieke_waarden_sam_directory_terminal(directory)
+directory_check <- "~/project_genexpressie/filtered_SAM_files"
+noteer_unieke_waarden_sam_directory_terminal(directory_check)
 
-
-
-
-# voorbeeldgebruik van de functie
-# output_dir <- "/pad/naar/uitvoer/filtered_sam" !!!ZELFDE output_dir ALS BIJ move_headered_sam_files in functie_final_sam!!!
-# keep_flags <- c(flags, die, je, wil, houden) of "none" !!!ZELFDE FLAGS ALS BIJ FLAGS FILTERING!!!
-# remove_flags <- c(flags, die, je, wil, verwijderen) of "none" !!!ZELFDE FLAGS ALS BIJ FLAGS FILTERING!!!
-
-# Hoe te runnen in een conda-environment:
-# 1) zorg dat je een conda-environment hebt waarin minimap2 en samtools geinstalleerd is
-# 2) vul de data in --> zie "voorbeeld gebruik van de functie", vul deze in met de data van toepassing
-# 3) activeer je conda-environment
-# 4) ga in de terminal naar de locatie van dit script
-# 5) run in de terminal de volgende command: Rscript functie_check_filter.R
 
