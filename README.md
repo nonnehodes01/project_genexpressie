@@ -349,12 +349,7 @@ install.packages("GenomicFeatures")
 install.packages("ggplot2")
 install.packages("BiocParallel")
 install.packages("ComplexHeatmap")
-library(bambu)
-library(GenomicFeatures)
-library(ggplot2)
-library(BiocParallel)
-library(circlize)
-library(ComplexHeatmap)
+
 ```
 
 Zorg ervoor dat je ook de BAM-bestanden, annotatiebestand en genoombestand hebt voorbereid en de juiste bestandspaden hebt ingesteld in de pipelinecode.
