@@ -1,11 +1,11 @@
 # Pipeline voor het uitvoeren van de functies
 run_pipeline <- function() {
   # Importeer functie bestanden
-  source("~/HU_ILC_DS2/project_genexpressie/Functies/functie_alignment.R")
-  source("~/HU_ILC_DS2/project_genexpressie/Functies/functie_flags_filtering.R")
-  source("~/HU_ILC_DS2/project_genexpressie/Functies/functie_check_filter.R")
-  source("~/HU_ILC_DS2/project_genexpressie/Functies/functie_add_header.R")
-  source("~/HU_ILC_DS2/project_genexpressie/Functies/functie_sam_to_bam.R")
+  source("~/HU_ILC_DS2/project_genexpressie/Functies/data_verwerking/functie_alignment.R")
+  source("~/HU_ILC_DS2/project_genexpressie/Functies/data_verwerking/functie_flags_filtering.R")
+  source("~/HU_ILC_DS2/project_genexpressie/Functies/data_verwerking/functie_check_filter.R")
+  source("~/HU_ILC_DS2/project_genexpressie/Functies/data_verwerking/functie_add_header.R")
+  source("~/HU_ILC_DS2/project_genexpressie/Functies/data_verwerking/functie_sam_to_bam.R")
   
   # Functie_alignment.R
   data_type_alignment <- "RNA"
