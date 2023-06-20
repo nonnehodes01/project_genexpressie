@@ -8,6 +8,8 @@ Het doel van dit project is om de kwaliteit van de RNA-sequencing data te beoord
 
 ## Installatie en gebruik
 
+Alle functies zijn in de github repo te downloaden onder het kopje "functies", hieraan zijn ook de functies voor het visualiseren te vinden. 
+
 ### Functie 1: het aligneren van Fastq-bestanden tegen een Fasta-referentie
 
 Deze functie, align_with_minimap2, is ontworpen om Fastq-bestanden te aligneren tegen een fasta-referentiebestand, dat een genoom of transcriptoom kan vertegenwoordigen. De alignering wordt uitgevoerd met behulp van de minimap2-tool. Hiervoor is een directory vereist met de Fastq-bestanden die je wilt aligneren, het pad naar het fasta-referentiebestand, en informatie over het type data en de gelezen sequenties (DNA of RNA, lange of korte reads). 
