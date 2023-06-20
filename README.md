@@ -18,11 +18,11 @@ Om deze functie effectief te gebruiken, volg je onderstaande stappen:
 
 #### Functieparameters:
 
-- __'data_type':__ Specificeer het type data dat wordt gealigneerd, "DNA" of "RNA".
-- __'read_type':__ Specificeer het type reads, "long" of "short".
-- __'input_dir':__ Geef het pad naar de directory met de Fastq-bestanden die je wilt aligneren.
-- __'reference_path':__ Specificeer het pad naar het fasta-referentiebestand (genoom of transcriptoom).
-- __'outpur_dir':__ Specificeer het pad naar de uitvoerdirectory waarin de gealigneerde bestanden worden opgeslagen.
+- __'data_type_alignment':__ Specificeer het type data dat wordt gealigneerd, "DNA" of "RNA".
+- __'read_type_alignment':__ Specificeer het type reads, "long" of "short".
+- __'input_dir_alignment':__ Geef het pad naar de directory met de Fastq-bestanden die je wilt aligneren.
+- __'reference_path_alignment':__ Specificeer het pad naar het fasta-referentiebestand (genoom of transcriptoom).
+- __'outpur_dir_alignment':__ Specificeer het pad naar de uitvoerdirectory waarin de gealigneerde bestanden worden opgeslagen.
 
 #### Uitvoeren van de functie:
 
@@ -47,13 +47,13 @@ Hier is een voorbeeld van hoe je de functie kunt gebruiken:
 
 ```r
 
-data_type <- "RNA"  # of "DNA"
-read_type <- "long"  # of "short"
-input_dir <- "/pad/naar/te/aligneren/bestanden"
-reference_path <- "/pad/naar/referentie/genoom"
-output_dir <- "/pad/naar/uitvoer/map"
+data_type_alignment <- "RNA"  # of "DNA"
+read_type_alignment <- "long"  # of "short"
+input_dir_alignment <- "/pad/naar/te/aligneren/bestanden"
+reference_path_alignment <- "/pad/naar/referentie/genoom"
+output_dir_alignment <- "/pad/naar/uitvoer/map"
 
-align_with_minimap2(data_type, read_type, input_dir, reference_path, output_dir)
+align_with_minimap2(data_type_alignment, read_type_alignment, input_dir_alignment, reference_path_alignment, output_dir_alignment)
 
 ```
 Zorg ervoor dat je de juiste paden en parameterwaarden gebruikt die overeenkomen met jouw specifieke situatie voordat je de functie uitvoert. 
@@ -69,9 +69,9 @@ Deze functie, filter_flags_directory, is bedoeld om SAM-bestanden te filteren op
 Om deze functie effectief te gebruiken, volg je onderstaande stappen:
 
 #### Functieparameters:
-- __'input_directory':__ Geef het pad naar de directory met de SAM-bestanden die je wilt filteren. 
-- __'output_directory':__ Geef het pad naar de uitvoerdirectory waarin de gefilterde bestanden worden opgeslagen. 
-- __'flags':__ Geef een vector met de gewenste flags om op te filteren. Bijvoorbeeld: c(0, 16).
+- __'input_directory_filtering':__ Geef het pad naar de directory met de SAM-bestanden die je wilt filteren. 
+- __'output_directory_filtering':__ Geef het pad naar de uitvoerdirectory waarin de gefilterde bestanden worden opgeslagen. 
+- __'flags_filtering':__ Geef een vector met de gewenste flags om op te filteren. Bijvoorbeeld: c(0, 16).
 
 
 #### Uitvoeren van de functie 
@@ -97,11 +97,11 @@ Hier is een voorbeeld van hoe je de functie kunt gebruiken:
 
 ```r
 
-input_directory <- "pad/naar/aligned/sam/files"  # Vervang dit door de naam van de map waarin de input SAM-bestanden zich bevinden
-output_directory <- "pad/naar/locatie/voor/opslaan"  # Vervang dit door de naam van de map waarin de gefilterde bestanden moeten worden opgeslagen
-flags_to_filter <- c(1, 2)  # Vervang dit door de gewenste flags om op te filteren
+input_directory_filtering <- "pad/naar/aligned/sam/files"  # Vervang dit door de naam van de map waarin de input SAM-bestanden zich bevinden
+output_directory_filtering <- "pad/naar/locatie/voor/opslaan"  # Vervang dit door de naam van de map waarin de gefilterde bestanden moeten worden opgeslagen
+flags_to_filter_filtering <- c(1, 2)  # Vervang dit door de gewenste flags om op te filteren
 
-filter_flags_directory(input_directory, output_directory, flags_to_filter)
+filter_flags_directory(input_directory_filtering, output_directory_filtering, flags_to_filter_filtering)
 
 ```
 Zorg ervoor dat je de juiste paden en flags gebruikt die overeenkomen met jouw specifieke situatie voordat je de functie uitvoert.
@@ -122,7 +122,7 @@ Om deze functie effectief te gebruiken, volg je onderstaande stappen:
 
 #### Functieparameters:
 
-- _'directory':_ Geef het pad naar de directory waarin de gefilterde SAM-bestanden zich bevinden. 
+- _'directory_check':_ Geef het pad naar de directory waarin de gefilterde SAM-bestanden zich bevinden. 
 let op: gebruik hier de output directory die gegenereerd is bij functie 2. 
 
 #### Uitvoeren van de functie:
@@ -147,9 +147,9 @@ Rscript functie_check_filter.R
 Hier is een voorbeeld van hoe je de functie kunt gebruiken:
 
 ```r
-directory <- "pad/naar/output/directory/van/functie/2"  # Vervang dit door het pad naar de directory met de gefilterde SAM-bestanden
+directory_check <- "pad/naar/output/directory/van/functie/2"  # Vervang dit door het pad naar de directory met de gefilterde SAM-bestanden
 
-noteer_unieke_waarden_sam_directory_terminal(directory)
+noteer_unieke_waarden_sam_directory_terminal(directory_check)
 
 ```
 Zorg ervoor dat je het juiste pad opgeeft naar de directory met de gefilterde SAM-bestanden voordat je de functie uitvoert.
@@ -168,9 +168,9 @@ Om deze functie effectief te gebruiken, volg je onderstaande stappen:
 
 #### Functieparameters:
 
-- __'aligned_directory':__ Geef het pad naar de map waarin de gealigneerde SAM-bestanden zich bevinden.
-- __'filtered_directory':__ Geef het pad naar de map waarin de gefilterde SAM-bestanden zich bevinden.
-- __'output_directory':__ Geef het pad naar de map waarin de gecombineerde bestanden moeten worden opgeslagen.
+- __'aligned_directory_add_header':__ Geef het pad naar de map waarin de gealigneerde SAM-bestanden zich bevinden.
+- __'filtered_directory_add_header':__ Geef het pad naar de map waarin de gefilterde SAM-bestanden zich bevinden.
+- __'output_directory_add_header':__ Geef het pad naar de map waarin de gecombineerde bestanden moeten worden opgeslagen.
 
 #### Uitvoeren van de functie:
 
@@ -194,11 +194,11 @@ Rscript functie_add_header.R
 Hier is een voorbeeld van hoe je de functie kunt gebruiken:
 
 ```r
-aligned_directory <- "pad/naar/output/map/van/functie/1"  # Vervang dit door het pad naar de map met de gealigneerde SAM-bestanden
-filtered_directory <- "pad/naar/output/map/van/functie/2"  # Vervang dit door het pad naar de map met de gefilterde SAM-bestanden
-output_directory <- "pad/naar/locatie/voor/output/files"  # Vervang dit door de naam van de map waarin de gecombineerde bestanden moeten worden opgeslagen
+aligned_directory_add_header <- "pad/naar/output/map/van/functie/1"  # Vervang dit door het pad naar de map met de gealigneerde SAM-bestanden
+filtered_directory_add_header <- "pad/naar/output/map/van/functie/2"  # Vervang dit door het pad naar de map met de gefilterde SAM-bestanden
+output_directory_add_header <- "pad/naar/locatie/voor/output/files"  # Vervang dit door de naam van de map waarin de gecombineerde bestanden moeten worden opgeslagen
 
-process_samtools_command(aligned_directory, filtered_directory, output_directory)
+process_samtools_command(aligned_directory_add_header, filtered_directory_add_header, output_directory_add_header)
 
 ```
 
@@ -216,8 +216,8 @@ Om deze functie effectief te gebruiken, volg je onderstaande stappen:
 
 #### Functieparameters
 
-- __'input_dir':__ Geef het pad naar de map met de gefilterde SAM-bestanden.
-- __'output_dir':__ Geef het pad naar de map waarin de BAM-bestanden moeten worden opgeslagen.
+- __'input_dir_sam_bam':__ Geef het pad naar de map met de gefilterde SAM-bestanden.
+- __'output_dir_sam_bam':__ Geef het pad naar de map waarin de BAM-bestanden moeten worden opgeslagen.
 
 #### Uitvoeren van de functie
 
@@ -241,10 +241,10 @@ Rscript functie_sam_to_bam.R
 Hier is een voorbeeld van hoe je de functie kunt gebruiken:
 
 ```r
-input_dir <- "pad/naar/output/directory/van/functie/4"  # Vervang dit door het pad naar de map met de gefilterde SAM-bestanden
-output_dir <- "pad/naar/locatie/voor/output/files"  # Vervang dit door het pad naar de map waarin de BAM-bestanden moeten worden opgeslagen
+input_dir_sam_bam <- "pad/naar/output/directory/van/functie/4"  # Vervang dit door het pad naar de map met de gefilterde SAM-bestanden
+output_dir_sam_bam <- "pad/naar/locatie/voor/output/files"  # Vervang dit door het pad naar de map waarin de BAM-bestanden moeten worden opgeslagen
 
-convert_sam_files_to_bam(input_dir, output_dir)
+convert_sam_files_to_bam(input_dir_sam_bam, output_dir_sam_bam)
 
 ```
 Zorg ervoor dat je de juiste paden opgeeft naar de betreffende mappen voordat je de functie uitvoert.
