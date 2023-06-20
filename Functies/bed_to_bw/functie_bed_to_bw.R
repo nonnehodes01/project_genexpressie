@@ -1,7 +1,8 @@
 # Functie om auto_wigtobigwig_hg38.sh aan te roepen voor alle BED-bestanden
-process_bed_files <- function(bed_dir, run_file) {
+process_bed_files <- function(bed_dir) {
   # Lijst van BED-bestanden in de opgegeven map
   bed_files <- list.files(path = bed_dir, pattern = "\\.bed$", full.names = TRUE)
+  run_file <- auto_wigtobigwig_hg38.sh
   
   # Loop over elk BED-bestand
   for (bed_file in bed_files) {
@@ -18,7 +19,6 @@ process_bed_files <- function(bed_dir, run_file) {
 
 # Pad naar de map met BED-bestanden
 bed_dir <- "/pad/naar/bed/bestanden"
-run_file <- "/pad/naar/auto_wigtobigwig_hg38.sh"
   
 # Aanroepen van de functie om auto_wigtobigwig_hg38.sh aan te roepen voor alle BED-bestanden
 process_bed_files(bed_dir, run_file)

@@ -1,8 +1,8 @@
 # Functie om SamtoBed.sh uit te voeren voor elk SAM-bestand
-process_sam_files <- function(sam_dir, toBed_file) {
+process_sam_files <- function(sam_dir) {
   # Lijst van SAM-bestanden in de opgegeven map
   sam_files <- list.files(path = sam_dir, pattern = "\\.sam$", full.names = TRUE)
-  
+  toBed_file <- SamtoBed.sh
   # Loop over elk SAM-bestand
   for (sam_file in sam_files) {
     # Controleren of het bestand een SAM-bestand is
@@ -18,7 +18,6 @@ process_sam_files <- function(sam_dir, toBed_file) {
 
 # Pad naar de map met SAM-bestanden
 sam_dir <- "/pad/naar/sam/bestanden"
-toBed_file <- "/pad/naar/SamtoBed.sh"
 
 # Aufrufen van de functie om SamtoBed.sh uit te voeren voor elk SAM-bestand
 process_sam_files(sam_dir, toBed_file)

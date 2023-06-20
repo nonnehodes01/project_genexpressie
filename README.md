@@ -253,10 +253,40 @@ Vergeet niet om de paden naar de mappen met de gefilterde SAM-bestanden en de ou
 
 ## Visualisaties
 
-Tijdens het project moeten verschillende visualisaties worden gemaakt om de data te analyseren en te vergelijken. Enkele voorbeelden van relevante visualisaties zijn:
+Dit project richt zich ook op het gebruik van visualisaties en een PCA-analyse om inzicht te krijgen in genomische gegevens. Visualisaties stellen onderzoekers in staat om de complexe patronen en relaties in de gegevens te begrijpen, terwijl PCA-analyse helpt bij het identificeren van belangrijke variabiliteit en het ontdekken van verborgen structuren.
 
-- PCA- en tSNE-plots voor de verschillende samples om de ILC-data te vergelijken met de andere data.
-- Scatter plots voor paarsgewijze vergelijkingen tussen samples, bijvoorbeeld tussen een ILC-dataset en een van de gepubliceerde datasets.
-- Visualisaties voor kwaliteitscontroles, zoals een grafiek die aangeeft hoeveel procent van de reads uit de fastq-bestanden gemapped kon worden naar het referentiegenoom.
-- Visualisatie van de reads in de IGV-browser. Hiervoor moet een workflow worden geschreven of aangepast, zodat de fastq-bestanden uiteindelijk worden omgezet naar bigwig-bestanden die ingelezen kunnen worden door de IGV-browser.
+### IGV-Browser voor Genomische Visualisaties
 
+De IGV-Browser (Integrative Genomics Viewer) is een veelgebruikte tool voor het visualiseren en verkennen van genoomgebieden en bijbehorende genetische informatie. Met IGV-Browser kunnen we de expressie van genen, varianten, epigenetische modificaties en andere genomische kenmerken in context bekijken. We kunnen bladeren door het genoom, inzoomen op specifieke regio's, annotaties toevoegen en verschillende lagen van gegevens overlappen om een beter begrip te krijgen van de biologische processen die plaatsvinden.
+
+De IGV browser gebruikt bigwig bestanden, omdat er tot nu toe alleen nog sam en bam bestanden gemaakt zijn, zijn er eerst een paar functies geschreven voor het omzetten van sam bestanden naar bigwig. 
+
+#### Functie 1: Sam naar Bed
+
+Dit script bevat een functie om het script "SamtoBed.sh" uit te voeren voor elk SAM-bestand in een opgegeven map.
+
+##### Gebruiksinstructies:
+
+1) Zorg ervoor dat de benodigde bestanden aanwezig zijn. Plaats het script "SamtoBed.sh" en het R-script in dezelfde map.
+
+2) Pas de variabelen sam_dir en toBed_file aan in het R-script:
+- __'sam_dir':__ Het pad naar de map waarin de SAM-bestanden zich bevinden.
+
+3) Open een terminal en navigeer naar de map waarin het R-script zich bevindt.
+
+4) Voer het R-script uit met behulp van het commando: 
+```r
+Rscript functie_sam_to_bed.R
+```
+
+5) Het script zal het script "SamtoBed.sh" aanroepen voor elk bestand. Het uitvoerresultaat zal worden weergegeven in de terminal.
+
+##### Voorbeeldgebruik:
+
+```r
+sam_dir <- "/pad/naar/sam/bestanden" #verander dit naar het gewenste pad
+
+process_sam_files(sam_dir, toBed_file)
+```
+
+#### Functie 2:
