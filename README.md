@@ -337,7 +337,7 @@ Om de PCA en de heatmap te maken is er een functie geschreven die gebruik maakt 
 
 #### Functie voor Heatmap en Principal Component Analysis (PCA):
 
-Deze pipeline maakt gebruik van het Bambu-pakket in R om een heatmap en Principal Component Analysis (PCA) te genereren op basis van genexpressiedata van BAM-bestanden. Het Bambu-pakket biedt handige functies en tools voor de analyse en visualisatie van genexpressiedata.
+De functie runBambuAnalysis voert de Bambu-analyse uit en genereert zowel de PCA-plot als de heatmap-plot voor visualisatie.
 
 ##### Installatie en vereisten: 
 
@@ -346,21 +346,34 @@ Voordat je de pipeline kunt uitvoeren, moet je ervoor zorgen dat het Bambu-pakke
 ```r
 install.packages("bambu")
 install.packages("GenomicFeatures")
+install.packages("ggplot2")
+install.packages("BiocParallel")
+install.packages("ComplexHeatmap")
 library(bambu)
 library(GenomicFeatures)
+library(ggplot2)
+library(BiocParallel)
+library(circlize)
+library(ComplexHeatmap)
 ```
 
 Zorg ervoor dat je ook de BAM-bestanden, annotatiebestand en genoombestand hebt voorbereid en de juiste bestandspaden hebt ingesteld in de pipelinecode.
 
 ##### Gebruiksinstructies:
 
-1) contacteer de servereigenaar voor toegang tot de data
+1) Plaats de BAM-bestanden in de opgegeven map bam.folder. Zorg ervoor dat de BAM-bestanden correct gealigneerde RNA-seq-gegevens bevatten.
 
-2) zorg dat bambu is geïnstalleert 
+2) Zorg ervoor dat het annotatiebestand in GTF-formaat correct is opgegeven in annotation.file. Dit bestand bevat de genoomannotaties die nodig zijn voor de analyse.
 
-3) pas de variabelen in de 'run_bambu_pipeline()' functie aan naar uw gewenste input volgens het voorbeeldgebruik.
+3) Specificeer het genoombestand in FASTA-formaat in genome.file. Dit bestand bevat het genoomreferentiesequentie dat nodig is voor de analyse.
 
-4) Run de 'run_bambu_pipeline()' functie in de console 
+4) Voer de R-code uit om de functie runBambuAnalysis te definiëren.
+
+5) Roep de functie runBambuAnalysis aan en geef de juiste argumenten: bam.folder, annotation.file en genome.file.
+
+6) De functie voert de Bambu-analyse uit, genereert de PCA-plot en de heatmap-plot, en slaat het resulterende GTF-bestand op in de map "~/project_genexpressie/bambu/".
+
+7) Bekijk de gegenereerde visualisaties en analyseer de resultaten.
 
 
 ##### Voorbeeldgebruik:
@@ -368,16 +381,16 @@ Zorg ervoor dat je ook de BAM-bestanden, annotatiebestand en genoombestand hebt 
 Hier is een voorbeeld van hoe je de functie kunt gebruiken:
 
 ```r 
-bam_folder <- "/pad/naar/BAM-bestanden"
-annotation_file <- "/pad/naar/annotatiebestand.gtf.gz"
-genome_file <- "/pad/naar/genoombestand.fna.gz"
-output_folder <- "/pad/naar/uitvoermap"
+bam.folder <- "/pad/naar/BAM-bestanden"
+annotation.file <- "/pad/naar/annotatiebestand.gtf.gz"
+genome.file <- "/pad/naar/genoombestand.fna.gz"
+output.folder <- "/pad/naar/uitvoermap"
 
 # Run the Bambu pipeline
-run_bambu_pipeline(bam_folder, annotation_file, genome_file, output_folder)
+runBambuAnalysis(bam.folder, annotation.file, genome.file)
 
 ``` 
-let op: Zorg ervoor dat je de juiste bestandspaden opgeeft voor bam_folder, annotation_file, genome_file en output_folder.
+Pas de bestands- en mapnamen aan volgens de specifieke locatie en bestandsnamen op uw systeem. Voer de bovenstaande code uit om de Bambu-analyse uit te voeren en de PCA-plot en de heatmap-plot te genereren.
 
 ### Deseq visualisatie
 
