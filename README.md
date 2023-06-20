@@ -263,6 +263,8 @@ De IGV-Browser (Integrative Genomics Viewer) is een veelgebruikte tool voor het 
 
 De IGV browser gebruikt bigwig bestanden, omdat er tot nu toe alleen nog sam en bam bestanden gemaakt zijn, zijn er eerst een paar functies geschreven voor het omzetten van sam bestanden naar bigwig. 
 
+De verkregen .bw bestanden kunnen gebruikt worden in de igv browser. 
+
 #### Functie 1: Sam naar Bed
 
 Dit script bevat een functie om het script "SamtoBed.sh" uit te voeren voor elk SAM-bestand in een opgegeven map.
