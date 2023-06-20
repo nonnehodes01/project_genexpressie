@@ -275,11 +275,12 @@ Dit script bevat een functie om het script "SamtoBed.sh" uit te voeren voor elk 
 3) Open een terminal en navigeer naar de map waarin het R-script zich bevindt.
 
 4) Voer het R-script uit met behulp van het commando: 
+
 ```r
 Rscript functie_sam_to_bed.R
 ```
 
-5) Het script zal het script "SamtoBed.sh" aanroepen voor elk bestand. Het uitvoerresultaat zal worden weergegeven in de terminal.
+5) De functie zal het script "SamtoBed.sh" aanroepen voor elk bestand. Het uitvoerresultaat zal worden weergegeven in de terminal.
 
 ##### Voorbeeldgebruik:
 
@@ -289,4 +290,32 @@ sam_dir <- "/pad/naar/sam/bestanden" #verander dit naar het gewenste pad
 process_sam_files(sam_dir, toBed_file)
 ```
 
-#### Functie 2:
+#### Functie 2: bed naar bigwig
+
+Dit script bevat een functie om het script "auto_wigtobigwig_hg38.sh" aan te roepen voor elk BED-bestand in een opgegeven map.
+
+##### Gebruiksinstructies:
+
+1) Zorg ervoor dat de benodigde bestanden aanwezig zijn. Plaats het script "auto_wigtobigwig_hg38.sh" en het R-script in dezelfde map.
+
+2) Pas de variabele bed_dir aan in het R-script:
+
+- __'bed_dir':__ Het pad naar de map waarin de BED-bestanden zich bevinden.
+
+3) Open een terminal en navigeer naar de map waarin het R-script zich bevindt.
+
+4)  Voer het R-script uit met behulp van het commando:
+
+```r
+Rscript functie_bed_to_bw.R
+```
+
+5) De functie zal het script "auto_wigtobigwig_hg38.sh" aanroepen voor elk bestand. Het uitvoerresultaat zal worden weergegeven in de terminal.
+
+##### Voorbeeldgebruik:
+
+```r
+bed_dir <- "/pad/naar/bed/bestanden" #verander dit naar het gewenste pad
+  
+process_bed_files(bed_dir)
+```

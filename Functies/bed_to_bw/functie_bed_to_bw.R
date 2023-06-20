@@ -21,4 +21,4 @@ process_bed_files <- function(bed_dir) {
 bed_dir <- "/pad/naar/bed/bestanden"
   
 # Aanroepen van de functie om auto_wigtobigwig_hg38.sh aan te roepen voor alle BED-bestanden
-process_bed_files(bed_dir, run_file)
+process_bed_files(bed_dir)
