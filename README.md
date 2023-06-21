@@ -253,6 +253,123 @@ De functie zal elk gefilterd SAM-bestand converteren naar het BAM-formaat met be
 
 Vergeet niet om de paden naar de mappen met de gefilterde SAM-bestanden en de output_dir aan te passen naar de werkelijke locaties voordat je de functie uitvoert.
 
+### functie 6: De volledige pipeline
+
+Deze pipeline is ontwikkeld om verschillende functies voor genexpressie data verwerking uit te voeren. Het script voert de functies in de juiste volgorde uit om genexpressiegegevens te verwerken en te transformeren voor verdere analyse.
+
+#### functies in de pipeline:
+
+De volgende functies worden gebruikt in deze pipeline:
+
+1) functie_alignment.R: Deze functie voert een aligner uit op de genexpressiegegevens.
+
+2) functie_flags_filtering.R: Deze functie filtert de gealigneerde gegevens op basis van specifieke vlaggen.
+
+3) functie_check_filter.R: Deze functie controleert de gefilterde gegevens om de kwaliteit ervan te verifiëren.
+
+4) functie_add_header.R: Deze functie voegt een header toe aan de gefilterde gegevens.
+
+5) functie_sam_to_bam.R: Deze functie converteert de gefilterde gegevens van het SAM-formaat naar het BAM-formaat.
+
+#### Gebruiksinstructies
+
+1) Volg deze stappen om de genexpressie data verwerkingspipeline uit te voeren:
+
+2) Zorg ervoor dat de functiebestanden beschikbaar zijn in de opgegeven paden.
+
+3) Pas indien nodig de parameters aan binnen elke functie in de pipeline om ze af te stemmen op jouw specifieke dataset.
+
+4) Voer het script uit om de pipeline uit te voeren:
+
+```r
+run_pipeline()
+
+```
+Opmerking: Zorg ervoor dat je de bestandspaden en parameters aanpast aan jouw specifieke projectvereisten voordat je de pipeline uitvoert.
+
+#### Voorbeeldgebruik
+
+Hier is een voorbeeld van hoe je de genexpressie data verwerkingspipeline kunt gebruiken:
+
+
+```r
+# Importeer de pipeline functie
+source("pad/naar/pipeline/script")
+
+# Uitvoeren van de pipeline
+run_pipeline()
+
+```
+
+Dit voorbeeld gaat ervan uit dat je de pipeline-bestanden hebt geplaatst in de juiste directory en dat je de functiepaden en parameters hebt aangepast aan jouw specifieke projectvereisten. De functies worden vervolgens uitgevoerd in de juiste volgorde om de genexpressiegegevens te verwerken.
+
+## Data processing
+
+De data moet gecorntrolleert worden op de kwaliteit, daarvoor gebruiken we nanoplot. 
+
+### Nanoplot
+
+NanoPlot is een krachtige softwaretool voor visualisatie en kwaliteitscontrole van nanopore-sequencinggegevens. Het stelt onderzoekers in staat om snel inzicht te krijgen in de karakteristieken van hun sequentiegegevens, waaronder lengtedistributie, kwaliteitsprofielen en GC-inhoud. Met een intuïtieve interface en diverse plotopties biedt NanoPlot waardevolle visualisaties voor de analyse en optimalisatie van nanopore-sequencingexperimenten.
+
+#### instalatie en vereisten:
+
+Voor het gebruik van dit script zijn de volgende vereisten nodig:
+
+- R geïnstalleerd op je systeem.
+- NanoPlot-software correct geïnstalleerd en toegankelijk via het systeempad.
+
+#### Gebruiksinstructies:
+
+Volg deze stappen om het script te gebruiken:
+
+1) Clone de repository naar jouw lokale omgeving:
+
+```r
+git clone https://github.com/jouw-gebruikersnaam/project.git
+``` 
+
+2) Navigeer naar de directory van het script:
+
+```r
+cd project
+```
+
+3) Pas de scriptvariabelen aan naar jouw specifieke vereisten:
+
+```r
+dir_path <- "/pad/naar/jouw/raw_data"
+outdir <- "/pad/naar/jouw/uitvoermap"
+```
+
+4) Zorg ervoor dat de NanoPlot-software correct is geïnstalleerd en toegankelijk is via het systeempad.
+
+5) Voer het script uit:
+
+```r
+Rscript nanoplot_script.R
+```
+
+5) Controleer de uitvoer in de console en het gegenereerde NanoPlot-bestand in de opgegeven uitvoermap.
+
+#### VOorbeeldgebruik
+
+Hier is een voorbeeld van hoe je het script kunt gebruiken:
+
+```r
+# Stel de directory in waar de ruwe databestanden zich bevinden
+dir_path <- "/home/gebruiker/project/raw_data"
+
+# Stel de uitvoermap in voor NanoPlot-gegevens
+outdir <- "/home/gebruiker/project/nanoplot_output"
+
+# Voer het script uit
+Rscript nanoplot_script.R
+
+```
+
+Dit voorbeeld gaat ervan uit dat je het script hebt gekopieerd naar je home directory, de scriptvariabelen hebt aangepast aan jouw specifieke paden en de NanoPlot-software correct is geïnstalleerd op jouw systeem. De uitvoer wordt weergegeven in de console en het NanoPlot-bestand wordt gegenereerd in de opgegeven uitvoermap.
+
+
 ## Visualisaties
 
 Dit project richt zich ook op het gebruik van visualisaties en een PCA-analyse om inzicht te krijgen in genomische gegevens. Visualisaties stellen onderzoekers in staat om de complexe patronen en relaties in de gegevens te begrijpen, terwijl PCA-analyse helpt bij het identificeren van belangrijke variabiliteit en het ontdekken van verborgen structuren.
